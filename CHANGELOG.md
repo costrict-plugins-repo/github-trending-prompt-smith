@@ -1,0 +1,82 @@
+# Changelog
+
+All notable changes to this plugin are documented here.
+
+## 1.2.2 — Model-detection adaptation layer for preview→confirm ordering
+
+*Released: July 2026*
+
+### Changes
+
+- Replaced the hardcoded Opus 4.8 output-ordering guard with a model-detection adaptation layer: five universal ordering invariants that bind every model, plus a per-model counter-bias table applied via system-prompt self-identification
+- Added a counter for Fable 5 / Mythos 5 (`claude-fable-5` / `claude-mythos-5`), whose harness training suppresses the preview-then-menu pattern — observed calling `AskUserQuestion` with no preview on screen at all
+- Kept the Opus 4.x counter (menu-before-preview as first action) as a table row
+- Unmatched models (Sonnet, Haiku, future releases) fall back to the universal invariants alone
+- Applied identically to both the dev and plugin command files (kept in sync)
+
+---
+
+## 1.2.1 — Fix confirmation prompt ordering under Opus 4.8
+
+*Released: June 2026*
+
+### Changes
+
+- Fixed a regression under Opus 4.8 where the `AskUserQuestion` confirmation menu (Execute / Edit / Regenerate / Cancel) appeared **before** the optimized prompt was displayed, forcing users to choose an action without seeing the result
+- Added an explicit output-ordering guard requiring the full preview to be rendered as text before any `AskUserQuestion` call
+- Applied the fix to both the dev and plugin command files (kept in sync)
+
+---
+
+## 1.2.0 — Interactive confirmation with selectable options
+
+*Released: April 2026*
+
+### Changes
+
+- Replaced free-text confirmation with interactive selectable options using `AskUserQuestion`
+- Confirmation now uses a two-step flow: action selection (Execute / Edit / Regenerate / Cancel), then mode selection if Regenerate is chosen
+- Users no longer need to type commands — just select from presented choices
+- Updated sample output in `README.md` to reflect the new interactive UI
+- Kept both command files (dev and plugin) in sync
+
+---
+
+## 1.1.0 — UX improvements, new flags, and repo rename
+
+*Released: April 2026*
+
+### Changes
+
+- Renamed repository from `claude-caude-prompt-smith` to `claude-code-prompt-smith`
+- Renamed command from `/prompt-smith` to `/prompt` (invoked as `/prompt-smith:prompt`)
+- Added `--help` flag with full usage block and examples
+- Added `--dry-run` flag to preview optimized prompts without executing
+- Added `edit` option after preview to refine the optimized prompt before executing
+- Added "What changed" optimization delta summary in the preview output
+- Added concrete usage template for empty input (matches `--help` output)
+- Added `LICENSE` file (MIT)
+- Added local testing docs and test prompts table to `CLAUDE.md`
+- Added `/release` command reference in `CLAUDE.md`
+- Condensed common development tasks into a single table in `CLAUDE.md`
+- Updated `PROMPT_SMITH.md` with new flags and UX requirements
+- Updated sample output in `README.md` to reflect new features
+- Fixed changelog format consistency (em dash separator)
+- Added `*.svg` to `.claudeignore`
+
+---
+
+## 1.0.0 — Initial release
+
+*Released: April 2026*
+
+### Changes
+
+- Added `/prompt-smith` plugin command
+- Added four optimization modes: default, agentic, compact, strict
+- Added confirmation-first execution flow
+- Added `--yes` to skip confirmation
+- Added `PROMPT_SMITH.md` maintainer reference
+- Added version history scaffold
+
+---

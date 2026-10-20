@@ -1,0 +1,20 @@
+{
+  "name": "prompt-smith",
+  "version": "1.2.2",
+  "description": "Optimize rough prompts into clearer, more executable Claude Code prompts with mode-aware rewriting and confirmation-first execution",
+  "author": {
+    "name": "Maxence Meloni",
+    "url": "https://github.com/maxencemeloni"
+  },
+  "homepage": "https://github.com/maxencemeloni/claude-code-prompt-smith",
+  "repository": "https://github.com/maxencemeloni/claude-code-prompt-smith",
+  "license": "MIT",
+  "keywords": [
+    "prompt",
+    "optimization",
+    "prompt-engineering",
+    "workflow",
+    "claude-code"
+  ],
+  "commands": ["./commands/"]
+}
